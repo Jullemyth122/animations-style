@@ -1,0 +1,57 @@
+.reverting-component {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .box,.circle,.rect,.bino,.leaf {
+        position: absolute;
+        background: skyblue;
+    }
+
+    .box,.circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .circle {
+        left: 25%;
+        border-radius: 25%;
+    }
+
+    .rect {
+        right: 25%;
+        width: 150px;
+        height: 75px;
+    }
+    .leaf {
+        left: 5%;
+        width: 200px;
+        border-radius: 100%;
+        height: 75px;
+    }
+    .bino {
+        right: 5%;
+        width: 35px;
+        height: 150px;
+        border-top-right-radius: 50%;
+        border-top-left-radius: 50%;
+    }
+
+    button {
+        outline: none;
+        padding: 10px;
+        border: 0px;
+        color: #fff;
+        background: rgb(31, 121, 156);
+        bottom: 20%;
+        position: absolute;
+    }
+
+    .revert {
+        bottom: 10%;
+    }
+
+}

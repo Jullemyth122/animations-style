@@ -1,0 +1,52 @@
+.swap-flip {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .button-swap {
+        position: absolute;
+        top: 5%;
+        left: 2.5%;
+        width: 100px;
+        height: 35px;
+        padding: 5px;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5px;
+        .box {
+            width: 40vw;
+            height: 50vh;
+            display: grid;
+            grid-template-rows: 50% 50%;
+            gap: 10px;
+            & > * {
+                align-self: center;
+                justify-self:center;
+                width: 100%;
+                height: 100%;
+                .insider {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    // background: black;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

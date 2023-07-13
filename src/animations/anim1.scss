@@ -1,0 +1,97 @@
+body {
+    margin:0
+}
+
+.anim1-comp {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    svg {
+        background: orange;
+    }
+
+    img {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .redBlack {
+        height:50vw;
+        width:100vw;
+        position: absolute;
+        overflow: hidden;
+        img {
+            left: 10%;
+        }
+    }
+    .redBlack {
+        -webkit-clip-path: url(#slide2);
+        clip-path: url(#slide2);
+        object-fit: cover;
+        object-position: 100% 100%;
+        --clip-wrapper: 0%;
+        .wrapper {
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% var(--clip-wrapper), 
+                0 var(--clip-wrapper)
+            );
+        }
+    }
+    .downblack {
+        z-index: 100;
+        height:50vw;
+        width:100vw;
+        position: absolute;
+        overflow: hidden;
+        -webkit-clip-path: url(#slide3);
+        clip-path: url(#slide3);
+        --clip-wrapper: 100%;
+        .wrapper {
+            clip-path: polygon(
+                0 var(--clip-wrapper), 
+                100% var(--clip-wrapper), 
+                100% 100%, 
+                0 100%
+            );
+            img {
+                left: 10%;
+                top: 50%;
+            }
+        }
+    }
+    .test {
+        height:50vw;
+        width:100vw;
+        position: absolute;
+        overflow: hidden;
+        -webkit-clip-path: url(#ponyClips);
+        clip-path: url(#ponyClips);
+        --clip-wrapper: 100%;
+        .wrapper {
+            clip-path: polygon(
+                0 var(--clip-wrapper), 
+                100% var(--clip-wrapper), 
+                100% 100%, 
+                0 100%
+            );
+            img {
+                right: 10%;
+            }
+        }
+    }
+}

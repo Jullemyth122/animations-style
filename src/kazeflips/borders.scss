@@ -1,0 +1,309 @@
+.borders-component {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+
+    span.themeWord {
+        display: inline-block;
+        transform: translateY(100%);
+    }
+
+    .bgAnimate {
+        opacity: 0;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        margin: 0;
+        z-index: 199;
+        height: 100vh;
+        visibility: visible;
+        background: #2b2b2bb4;
+    }
+    
+    .circle {
+        visibility: visible;
+        opacity: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 135px;
+        height: 135px;
+        background: black;
+        border-radius: 50%;
+        position: fixed;
+        overflow: hidden;
+        border: 1px solid white;
+        right: 5%;
+        bottom: 5%;
+        z-index: 301;
+        .circle-text {
+            font-size: 14px;
+            text-align: center;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+        .after {
+            width: 100%;
+            height: 0%;
+            position: absolute;
+            z-index: -1;
+            background: white;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    .pagesContainer {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        .themes.gap {
+            gap: 2rem;
+        }
+        .themes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            width: 96%;
+            .themeWrapper {
+                --clip-overlay1:150%;
+                --clip-overlay2:150%;
+                width: 100%;
+                position: relative;
+                height: 60rem;
+                max-height: 70vh;
+                z-index: 250;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                transition: all 0.7s cubic-bezier(.25,.72,.67,.92); // add this
+
+                &:not(.selected):hover {
+                    width: 100%;
+                }
+                &.m:not(.selected):hover,
+                &.m1:not(.selected):hover,
+                &.m2:not(.selected):hover,
+                &.a1:not(.selected):hover,
+                &.a2:not(.selected):hover {
+                    width: 200%;
+                    max-height: 77vh;
+                    .themeSlides {
+                        &:hover {
+                            img {
+                                filter: grayscale(0%);
+                                object-position: center right;
+                                animation: movingAround 10s ease-in-out alternate infinite;
+                            }
+    
+                        }
+                    }
+                }
+                
+                --clip: 0%;
+                clip-path: polygon(var(--clip) 0%, 100% 0%, calc(100% - var(--clip)) 100%, 0% 100%);
+                &.selected {
+                    max-height: 80vh;
+                    z-index: 256;
+                }            
+
+                .themeSlides {                    
+                    position: absolute;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    
+                    img {
+                        z-index: 2;
+                        scale: 2;
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                        filter: grayscale(100%);
+                    }
+                    video {
+                        object-fit: cover;
+                        z-index: 1;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+                    &:hover {
+                        img {
+                            filter: grayscale(0%);
+                        }
+
+                    }
+                    
+                    &::after,&::before {
+                        position: absolute;
+                        z-index: 9;
+                        width: 100%;
+                        height: 100%;
+                        content: '';
+                    }
+                    &::after {
+                        clip-path: polygon( 
+                            calc(0% - var(--clip-overlay1)) 0%, 
+                            calc(125% - var(--clip-overlay1)) 0%, 
+                            calc(100% - var(--clip-overlay1)) 100%, 
+                            calc(-25% - var(--clip-overlay1)) 100%
+                        );
+                        background: #03030327;
+                    }
+                    &::before {
+                        clip-path: polygon( 
+                            calc(0% - var(--clip-overlay2)) 0%, 
+                            calc(125% - var(--clip-overlay2)) 0%, 
+                            calc(100% - var(--clip-overlay2)) 100%, 
+                            calc(-25% - var(--clip-overlay2)) 100%
+                        );
+                        background: #03030365;
+                    }
+
+                    .text-slider {
+                        --height-slider:0%;
+                        top: 5%;
+                        left: 2%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 7.5px 0px;
+                        padding-left: 7.5px;
+                        z-index: 20;
+                        &::after {
+                            width: 1.5px;
+                            height: var(--height-slider);
+                            background: #fff;
+                            content: '';
+                            left: 0;
+                            position: absolute;
+                        }
+                        h5 {
+                            letter-spacing: 4px;
+                            font-weight: 300;
+                            font-family: 'Inter', sans-serif;
+                            color: #fff;
+                            font-size: 16px;
+                            overflow: hidden;
+                            span {
+                                display: inline-block;
+                                transform: translateX(-100%);
+                            }
+                        }
+                    }
+
+                    .icons {
+                        z-index: 10;
+                        position: absolute; 
+                        scale: 1;
+                        width: 125px;
+                        height: 125px; 
+                        object-fit:initial;
+                        pointer-events: none;
+
+                    }
+                    .intro-theme {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        width: 100%;
+                        z-index: 3;
+                    }
+                    .themeTitle {
+                        width: 100%;
+                        font-size: 20px;
+                        font-family: 'Inter', sans-serif;
+                        font-weight: 400;
+                        color: white;
+                        text-decoration: none;
+                        text-align: center;
+                        opacity: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                    }
+                    &.m {
+                        --m-open:0%;
+                        clip-path: polygon(
+                            calc(50% - var(--m-open)) 0, /* left side */
+                            calc(50% + var(--m-open)) 0,   /* right side */
+                            calc(50% + var(--m-open)) 100%,  /* right side */
+                            calc(50% - var(--m-open)) 100% /* left side */
+                        );
+                    }
+                    &.m1 {
+                        left: -50%;
+                        --m1-open:0%;
+                        clip-path: polygon(
+                            calc(0%) 0, /* left side */
+                            calc(0% + var(--m1-open)) 0,   /* right side */
+                            calc(0% + var(--m1-open)) 100%,  /* right side */
+                            calc(0%) 100% /* left side */
+                        );
+                    }
+                    &.m2 {
+                        left: -50%;
+                        --m2-open:0%;
+                        clip-path: polygon(
+                            calc(0%) 0, /* left side */
+                            calc(0% + var(--m2-open)) 0,   /* right side */
+                            calc(0% + var(--m2-open)) 100%,  /* right side */
+                            calc(0%) 100% /* left side */
+                        );
+                    }
+                    &.a1 {
+                        right: -50%;
+                        --a1-open:100%;
+                        clip-path: polygon(
+                            calc(var(--a1-open)) 0, /* left side */
+                            calc(100%) 0,   /* right side */
+                            calc(100%) 100%,  /* right side */
+                            calc(var(--a1-open)) 100% /* left side */
+                        );
+                    }
+                    &.a2 {
+                        right: -50%;
+                        --a2-open:100%;
+                        clip-path: polygon(
+                            calc(var(--a2-open)) 0, /* left side */
+                            calc(100%) 0,   /* right side */
+                            calc(100%) 100%,  /* right side */
+                            calc(var(--a2-open)) 100% /* left side */
+                        );
+                    }
+                }
+                &.selected {
+                    max-height: 80vh;
+                    .themeSlides {
+                        img {
+                            filter: grayscale(0%);
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
+
+@keyframes movingAround {
+    100%{
+        object-position: 0% -200%;
+    }
+}

@@ -1,0 +1,33 @@
+
+.anim3-component {
+    height: 100%;
+    .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+        svg {
+            position: absolute;
+        }
+    
+        img {
+            object-position: center 15%;
+            object-fit: cover;
+            width: 90%;
+            height: 80%;
+            margin: auto;
+            -webkit-clip-path: url(#clip-path-1);
+            clip-path: url(#clip-path-1);
+        }
+    }
+    .extra-height {
+        height: 100vh;
+    }
+    .next-section {
+        height: 200vh;
+    }
+}
+

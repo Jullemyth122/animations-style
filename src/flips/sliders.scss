@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Bebas+Neue&family=Berkshire+Swash&family=BhuTuka+Expanded+One&family=Big+Shoulders+Inline+Display:wght@200&family=Bodoni+Moda:ital,opsz@1,6..96&family=Boogaloo&family=Bungee&family=Cagliostro&family=Cinzel+Decorative:wght@400;900&family=Cinzel:wght@400;600;900&family=Coda&family=Contrail+One&family=Damion&family=Dorsa&family=Federant&family=Goldman&family=Inter:wght@100;200;300;400;500;700;800;900&family=Irish+Grover&family=Italianno&family=Jacques+Francois&family=Julius+Sans+One&family=Kameron:wght@400;700&family=Kaushan+Script&family=Keania+One&family=Kings&family=Kosugi&family=Koulen&family=Kranky&family=Krona+One&family=Kumar+One&family=Langar&family=League+Gothic&family=Lexend+Peta:wght@300&family=Lexend+Tera:wght@200;400&family=Linden+Hill&family=Lobster&family=Londrina+Shadow&family=Lora&family=Lustria&family=MedievalSharp&family=Metal&family=Michroma&family=Miltonian&family=Monoton&family=MonteCarlo&family=Montserrat:wght@200&family=Ms+Madi&family=Newsreader:opsz@6..72&family=Notable&family=Noto+Serif+HK:wght@300&family=Nova+Flat&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oranienbaum&family=Orbitron:wght@400;500&family=Oswald&family=Oxygen+Mono&family=Oxygen:wght@300&family=PT+Mono&family=Playfair+Display:ital,wght@0,400;1,400;1,900&family=Poly&family=Poppins:wght@200;300;400;900&family=Prosto+One&family=Quattrocento&family=Rationale&family=Roboto:wght@300&family=Rosarivo&family=Sen&family=Signika+Negative:wght@300&family=Silkscreen&family=Space+Mono&family=Syne:wght@800&family=Trochut&family=Unica+One&family=Zen+Dots&display=swap');
+$middleColor: #b73cec;
+
+.sliders-component {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+    font-family: 'Michroma', sans-serif;
+    z-index: 1;
+
+    .mainBg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @for $i from 1 through 5 {
+            $saturation: ($i - 1) * 25%;
+            // $contrast: ($i - 1) * 2%;
+            .s#{$i} {
+                filter: saturate($saturation);
+            }
+        }
+
+        img {
+            object-fit: cover;
+            --circle-open:0%;
+            clip-path: circle(var(--circle-open) at 50% 50%);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .background {
+        z-index: -1;
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        display: grid;
+        gap:10px;
+        grid-template-columns: repeat(10,1fr);
+    
+        .pop-ups {
+            --clip-overlay:100%;
+            // clip-path: polygon(25% 0%, 96% 0, 75% 100%, 6% 100%);
+            // clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            clip-path: polygon( 
+                calc(25% - var(--clip-overlay)) 0%, 
+                calc(100% - var(--clip-overlay)) 0%, 
+                calc(75% - var(--clip-overlay)) 100%, 
+                calc(0% - var(--clip-overlay)) 100%);
+            background: black;
+        }
+
+        @for $i from 1 through 10 {
+          $percentage: abs(50 - $i * 10) * 2%;
+          .pop-ups.s#{$i} {
+            background-color: mix(black, $middleColor, $percentage);
+          }
+        }
+    
+    }
+
+
+    .diamonds {
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        .overlay-diamond {
+            
+        }
+        .diamond {
+            transform: rotate(45deg);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+            
+        }
+    }
+
+    .textLoop {
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .texts {
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            h4 {
+                text-align: center;
+                font-size: 50px;
+                opacity: 0;
+                position: absolute;
+                overflow: hidden;
+            }
+            .shift {
+                -webkit-text-stroke: 1px #000; /* width and color */
+                color: transparent;
+            }
+            .overlay {
+                opacity: 1;
+                --clip-overlay:100%;
+                // clip-path: polygon(25% 0%, 96% 0, 75% 100%, 6% 100%);
+
+                // clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+                clip-path: polygon( 
+                    calc(25% - var(--clip-overlay)) 0%, 
+                    calc(100% - var(--clip-overlay)) 0%, 
+                    calc(75% - var(--clip-overlay)) 100%, 
+                    calc(0% - var(--clip-overlay)) 100%
+                );
+            }
+            @for $i from 1 through 4 {
+                $percentage: abs(50 - $i * 10) * 2%;
+                .overlay.s-#{$i} {
+                    color: mix(black, $middleColor, $percentage);
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Bebas+Neue&family=Berkshire+Swash&family=BhuTuka+Expanded+One&family=Big+Shoulders+Inline+Display:wght@200&family=Bodoni+Moda:ital,opsz@1,6..96&family=Boogaloo&family=Bungee&family=Cagliostro&family=Cinzel+Decorative:wght@400;900&family=Cinzel:wght@400;600;900&family=Coda&family=Contrail+One&family=Damion&family=Dorsa&family=Federant&family=Goldman&family=Inter:wght@100;200;300;400;500;700;800;900&family=Irish+Grover&family=Italianno&family=Jacques+Francois&family=Julius+Sans+One&family=Kameron:wght@400;700&family=Kaushan+Script&family=Keania+One&family=Kings&family=Kosugi&family=Koulen&family=Kranky&family=Krona+One&family=Kumar+One&family=Langar&family=League+Gothic&family=Lexend+Peta:wght@300&family=Lexend+Tera:wght@200;400&family=Linden+Hill&family=Lobster&family=Londrina+Shadow&family=Lora&family=Lustria&family=MedievalSharp&family=Metal&family=Michroma&family=Miltonian&family=Monomaniac+One&family=Monoton&family=MonteCarlo&family=Montserrat:wght@200&family=Ms+Madi&family=Newsreader:opsz@6..72&family=Notable&family=Noto+Serif+HK:wght@300&family=Nova+Flat&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oranienbaum&family=Orbitron:wght@400;500&family=Oswald&family=Oxygen+Mono&family=Oxygen:wght@300&family=PT+Mono&family=Playfair+Display:ital,wght@0,400;1,400;1,900&family=Poly&family=Poppins:wght@200;300;400;900&family=Prosto+One&family=Quattrocento&family=Rationale&family=Roboto:wght@300&family=Rosarivo&family=Sen&family=Signika+Negative:wght@300&family=Silkscreen&family=Space+Mono&family=Syne:wght@800&family=Trochut&family=Unica+One&family=Zen+Dots&display=swap');
+
+.anim2-component {
+    font-family: 'Krona One', sans-serif;
+    .banner {
+        width: 100%;
+        height: 100%;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        position: relative;
+        .wrapper {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        [class*="layer"] {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: baseline;
+            overflow: hidden;
+            h1 {
+                display: inline-block;
+                font-weight: 200;
+                letter-spacing: 2vw;
+                font-size: clamp(35px, 10vw, 15vw);
+            }
+            
+            &.lf {
+                --lf-clip:0%;
+                z-index: 1;
+                h1 {
+                    -webkit-text-stroke: 1.5px black;
+                    color: transparent;
+                }
+                clip-path: polygon(0 0, var(--lf-clip) 0, var(--lf-clip) 100%, 0 100%);
+            }
+            &.rt {
+                --rt-clip:50%;
+                h1 {
+                    scale: 0.85;
+                }
+                clip-path: polygon(50% 0, var(--rt-clip) 0%, var(--rt-clip) 100%, 50% 100%);
+            }   
+        }
+        .mid-layer {
+            top: 0;
+            left: 0;
+            position: absolute;
+            --mid-clip:0%;
+            --mid-h-clip:0%;
+            background: rgb(0, 0, 0);
+            z-index: 3;
+            clip-path: polygon(
+                calc(49% - var(--mid-h-clip) ) calc( 50% - var(--mid-clip)), 
+                calc(51% + var(--mid-h-clip)) calc( 50% - var(--mid-clip)), 
+                calc(51% + var(--mid-h-clip)) calc( 50% + var(--mid-clip)), 
+                calc(49% - var(--mid-h-clip) ) calc( 50% + var(--mid-clip)));
+            img {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                object-position: center 10%;
+                object-fit: cover;
+            }
+            width: 100%;
+            height: 100%;
+        }
+        .showcases {
+            display: none;
+            background: gray;
+            height: 100%;
+            // max-height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            margin: auto;
+            padding: 20px;
+            .title-text {
+                z-index: 1000000;
+                opacity: 0;
+                text-align: center;
+                font-size: clamp(30px, 3.5vw, 10vw);
+            }
+            .showInside {
+                // border: 2px solid red;
+                // background: rgb(235, 37, 47);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                // padding: 20px;
+                height: 90vh;
+            }
+            .showMovie {
+                // top: 10%;
+                // left: 5%;
+                // position: absolute;
+                width: 100%;
+                // overflow: hidden;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                .mid-layer {
+                    // border-radius: 20px;
+                    overflow: hidden;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .mid-layer {
+                    -webkit-clip-path: url(#clip-path-1);
+                    clip-path: url(#clip-path-1);
+                    img {
+                        object-position: center 20%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,127 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #222;
+}
+
+p {
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    .active-button {
+        width: 100px;
+        height: 35px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        color: #fff;
+        position: absolute;
+        top: 5%;
+        left: 2.5%;
+    }
+    .p {
+        margin: 20px auto;
+        height: 30vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // padding: 1.25rem;
+        border: 1px solid #222;
+        width: 80%;
+        border-radius: 0.5rem;
+        img {
+            object-fit: cover;
+            object-position: center 20%;
+        }
+        
+        &.p-1 {
+            position: relative;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        p {
+            position: relative;
+            z-index: 2;
+        }
+        .p-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                border-radius: 1.5rem;
+                width: 80%;
+                height: 80%;
+            }
+        }
+        .p-1 .p-bg {
+            top: 0;
+            left: 0;
+        }
+        
+        &.rev .p-bg {
+            // top: 10%;
+            // left: 10%;
+            width: 80%;
+            height: 80%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
+    }
+
+    .component-two {
+        width: 100%;
+        height: 100%;
+        .p {
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            width: 100%;
+            border: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .main-item {
+                position: relative;
+                border: 1px solid #222;
+                width: 80%;
+                height: 100%;
+                border-radius: 0.5rem;
+                .p-bg {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+            .p-1 .p-bg {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+    }
+}
+
+
+

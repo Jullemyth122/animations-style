@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Bebas+Neue&family=Berkshire+Swash&family=BhuTuka+Expanded+One&family=Big+Shoulders+Inline+Display:wght@200&family=Bodoni+Moda:ital,opsz@1,6..96&family=Boogaloo&family=Bungee&family=Cagliostro&family=Cinzel+Decorative:wght@400;900&family=Cinzel:wght@400;600;900&family=Coda&family=Contrail+One&family=Damion&family=Dorsa&family=Federant&family=Goldman&family=Inter:wght@100;200;300;400;500;700;800;900&family=Irish+Grover&family=Italianno&family=Jacques+Francois&family=Julius+Sans+One&family=Kameron:wght@400;700&family=Kaushan+Script&family=Keania+One&family=Kings&family=Kosugi&family=Koulen&family=Kranky&family=Krona+One&family=Kumar+One&family=Langar&family=League+Gothic&family=Lexend+Peta:wght@300&family=Lexend+Tera:wght@200;400&family=Linden+Hill&family=Lobster&family=Londrina+Shadow&family=Lora&family=Lustria&family=MedievalSharp&family=Metal&family=Michroma&family=Miltonian&family=Monoton&family=MonteCarlo&family=Montserrat:wght@200&family=Ms+Madi&family=Newsreader:opsz@6..72&family=Notable&family=Noto+Serif+HK:wght@300&family=Nova+Flat&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oranienbaum&family=Orbitron:wght@400;500&family=Oswald&family=Oxygen+Mono&family=Oxygen:wght@300&family=PT+Mono&family=Playfair+Display:ital,wght@0,400;1,400;1,900&family=Poly&family=Poppins:wght@200;300;400;900&family=Prosto+One&family=Quattrocento&family=Rationale&family=Roboto:wght@300&family=Rosarivo&family=Sen&family=Signika+Negative:wght@300&family=Silkscreen&family=Space+Mono&family=Syne:wght@800&family=Trochut&family=Unica+One&family=Zen+Dots&display=swap');
+
+$bg-gradient: linear-gradient(
+  180deg,
+  rgba(0, 0, 0, 0.6) 0%,
+  rgba(0, 0, 0, 0.3) 100%
+);
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.observer-component {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    background: black;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    position: relative;
+
+    .scrolldown {
+        z-index: 10;
+        position: absolute;
+        right: calc(45%);
+        top: calc(5%);
+    }
+
+    .shownUp.top-left {
+        top: 5%;
+        left: 5%;
+    }
+    .shownUp.top-right {
+        top: 5%;
+        right: 5%;
+    }
+    .shownUp.bottom-left {
+        bottom: 5%;
+        left: 5%;
+    }
+    .shownUp.bottom-right {
+        bottom: 5%;
+        right: 5%;
+    }
+
+    .shownUp {
+        z-index: 100;
+        position: absolute;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 230px;
+        font-family: 'Inter', sans-serif;
+
+        .shownUpBody {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text_body_img {
+            visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 70% 30%;
+            // gap: 10px;
+            & > * {
+                align-self: center;
+                justify-self: center;
+            }
+            h4 {
+                color: red;
+                text-align: center;
+                letter-spacing: 10px;
+                font-weight: 800;
+            }
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+
+    h2 {
+        font-size: clamp(1rem, 5vw, 5rem);
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: 0.5em;
+        margin-right: -0.5em;
+        color: hsl(0, 0%, 0%);
+        width: 90vw;
+        max-width: 1200px;
+    }
+
+    .text-bg {
+        --clip-text:0%;
+        --clip-text2:0%;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            clip-path: polygon( 
+                calc(25% - var(--clip-overlay)) 0%, 
+                calc(100% - var(--clip-overlay)) 0%, 
+                calc(75% - var(--clip-overlay)) 100%, 
+                calc(0% - var(--clip-overlay)) 100%
+            );
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            filter: grayscale(1);
+            // filter: blur(5px);
+        }
+        .pl2 {
+            filter: grayscale(0.75);
+        }
+        .pl3 {
+            filter: grayscale(0);
+        }
+        &::after {
+            clip-path: polygon(
+                calc(50% - var(--clip-text)) 0, 
+                calc(50% + var(--clip-text2)) 0, 
+                calc(50% + var(--clip-text)) 100%, 
+                calc(50% - var(--clip-text2)) 100%
+            );
+            width: 100%;
+            height: 100%;
+            content: '';
+            border: 1px solid #000;
+            position: absolute;
+            // background: white;
+        }
+    }
+    
+    header {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        width: 100%;
+        z-index: 3;
+        height: 7em;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(0.66rem, 2vw, 1rem);
+        letter-spacing: 0.5em;
+    }
+    
+    section {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        visibility: hidden;
+    
+        .outer,
+        .inner {
+            width: 100%;
+            height: 100%;
+            overflow-y: hidden;
+        }
+    
+        .bg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            h2 {
+                z-index: 2;
+            }
+            .line {
+                position: relative;
+                overflow: hidden;
+            }
+        
+            .clip-text {
+                overflow: hidden;
+            }
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    h2 * {
+        will-change: transform;
+    }
+}

@@ -1,0 +1,106 @@
+:root {
+    --display-mid-height:50vh;
+    --display-mid-gap:10px;
+    @media (max-width:768px) {
+        --display-mid-gap:2px;
+        --display-mid-height:180px;
+    }
+}
+.passflips-component {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .sliders-small-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        
+        .sliders-small {
+            --clip-overlay:100%;
+            --clip-bottom:0%;
+            --clip-border:0%;
+            // clip-path: polygon(25% 0%, 96% 0, 75% 100%, 6% 100%);
+            // clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            clip-path: polygon( 
+                calc(25% - var(--clip-overlay) - var(--clip-border)) var(--clip-bottom), 
+                calc(100% - var(--clip-overlay)) var(--clip-bottom), 
+                calc(75% - var(--clip-overlay) + var(--clip-border)) 100%, 
+                calc(0% - var(--clip-overlay)) 100%);
+            width: 20vw;
+            height: 100%;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
+    }
+    .sliders-small-wrapper.top {
+        top: 5%;
+    }
+    .sliders-bottom-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        bottom: 5%;
+        .sliders-small {
+            --small-bottom:0%;
+            clip-path: polygon( 
+                calc(0%) 0%, 
+                calc(100%) 0%, 
+                calc(100%) var(--small-bottom), 
+                calc(0%) var(--small-bottom));
+            width: 20vw;
+            height: 100%;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .sliders-big-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        gap: var(--display-mid-gap);
+        width: 100%;
+        height: var(--display-mid-height);
+        padding: 10px;
+        // background: orange;
+        .sliders-small {
+            --small-bottom:100%;
+            --small-top:0%;
+            clip-path: polygon( 
+                calc(0%) var(--small-top), 
+                calc(100%) var(--small-top), 
+                calc(100%) var(--small-bottom), 
+                calc(0%) var(--small-bottom));
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            // clip-path: polygon(25% 0%, 96% 0, 75% 100%, 6% 100%);
+            // clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+}

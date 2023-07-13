@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Bebas+Neue&family=Berkshire+Swash&family=BhuTuka+Expanded+One&family=Big+Shoulders+Inline+Display:wght@200&family=Bodoni+Moda:ital,opsz@1,6..96&family=Boogaloo&family=Bungee&family=Cagliostro&family=Cinzel+Decorative:wght@400;900&family=Cinzel:wght@400;600;900&family=Coda&family=Contrail+One&family=Damion&family=Dorsa&family=Federant&family=Goldman&family=Inter:wght@100;200;300;400;500;700;800;900&family=Irish+Grover&family=Italianno&family=Jacques+Francois&family=Julius+Sans+One&family=Kameron:wght@400;700&family=Kaushan+Script&family=Keania+One&family=Kings&family=Kosugi&family=Koulen&family=Kranky&family=Krona+One&family=Kumar+One&family=Langar&family=League+Gothic&family=Lexend+Peta:wght@300&family=Lexend+Tera:wght@200;400&family=Linden+Hill&family=Lobster&family=Londrina+Shadow&family=Lora&family=Lustria&family=MedievalSharp&family=Metal&family=Michroma&family=Miltonian&family=Monoton&family=MonteCarlo&family=Montserrat:wght@200&family=Ms+Madi&family=Newsreader:opsz@6..72&family=Notable&family=Noto+Serif+HK:wght@300&family=Nova+Flat&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Oranienbaum&family=Orbitron:wght@400;500&family=Oswald&family=Oxygen+Mono&family=Oxygen:wght@300&family=PT+Mono&family=Playfair+Display:ital,wght@0,400;1,400;1,900&family=Poly&family=Poppins:wght@200;300;400;900&family=Prosto+One&family=Quattrocento&family=Rationale&family=Roboto:wght@300&family=Rosarivo&family=Sen&family=Signika+Negative:wght@300&family=Silkscreen&family=Space+Mono&family=Syne:wght@800&family=Trochut&family=Unica+One&family=Zen+Dots&display=swap');
+
+.animation-component {
+    height: 100vh;
+    width: 100%;
+    background: #231F20;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+    font-family: 'Notable', sans-serif;
+
+    h1 {
+        font-size: 50px;
+        color: #fff;
+        position: absolute;
+    }
+
+    .rt_1 {
+        opacity: 0;
+        scale: 0.3;
+    }
+    .rt_2 {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .two_items {
+        width: 500px;
+        display: grid;
+        height: 130px;
+        grid-template-columns: 50% 50%;
+        
+        & > * {
+            align-self: center;
+            justify-self: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            h1 {
+                // white-space: nowrap;
+                width: 100%;
+                --mixItem-dif:normal;
+                position: absolute;
+                mix-blend-mode: var(--mixItem-dif);
+            }
+
+            &.lf {
+                left: -50%;
+            }
+            &.rt {
+                right: -50%;
+            }
+            .doubleBox {
+                scale: 0;
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                border: 1px solid rgb(231, 201, 68);
+            }
+        }
+    }
+
+    .animeBackground {
+        // display: none;
+        top: 30%;
+        height: 500px;
+        width: 600px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        .semiBackground {
+            z-index: -1;
+            position: absolute;
+            width: 80%;
+            border-radius: 50%;
+            background: rgb(214, 54, 54);
+            height: 100%;
+            bottom: 25%;
+        }
+        img {
+            object-position: 100% 0%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .japanese_words {
+        display: none;
+        width: 90%;
+        position: absolute;
+        height: 90%;
+        gap: 10px;
+        color: #fff;
+        & > * {
+            --display-line:0%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                bottom: 0;
+                height: 1.5px;
+                width:var(--display-line);
+                background: #fff;
+
+            }
+            h1 {
+                position: relative;
+                overflow: hidden;
+
+                span {
+                    transform: translateY(-100%);
+                    display: inline-block;
+                }
+            }
+            .boxImage {
+                z-index: 2;
+                background-color: orange;
+                --clip-image:100%;
+                width: 80px;
+                height: 80px;
+                clip-path: polygon(0 var(--clip-image), 100% var(--clip-image), 100% 100%, 0% 100%);
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
